@@ -30,7 +30,7 @@ class BinaryComplementAutomaton:
       automaton.WriteAndMove(write, -1)
       return self.__Q1(automaton)
     else:
-      return 'fail 1'
+      return 'fail'
 
   def __Q1 (self, automaton:TuringMachine):
     self.__state = 'Q1'
@@ -49,7 +49,7 @@ class BinaryComplementAutomaton:
       automaton.WriteAndMove('<', +1)
       return self.__Qf()
     else:
-      return 'fail 2'
+      return 'fail'
 
   def __Qf (self):
     self.__state = 'Qf'
