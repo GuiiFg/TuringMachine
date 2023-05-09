@@ -9,44 +9,44 @@ class BinaryComplementAutomaton:
   def state (self):
     return self.__state
   
-  def Start(self, automaton:TuringMachine):
-    return self.__Q0(automaton)
+  def Start(self, turingMachine:TuringMachine):
+    return self.__Q0(turingMachine)
     
-  def __Q0 (self, automaton:TuringMachine):
+  def __Q0 (self, turingMachine:TuringMachine):
     self.__state = 'Q0'
     write = ''
-    value = automaton.Read()
+    value = turingMachine.Read()
 
     if value == '1':
       write = '0'
-      automaton.WriteAndMove(write, 1)
-      return self.__Q0(automaton)
+      turingMachine.WriteAndMove(write, 1)
+      return self.__Q0(turingMachine)
     elif value == '0':
       write = '1'
-      automaton.WriteAndMove(write, 1)
-      return self.__Q0(automaton)
+      turingMachine.WriteAndMove(write, 1)
+      return self.__Q0(turingMachine)
     elif value == '__empty__':
       write = '__empty__'
-      automaton.WriteAndMove(write, -1)
-      return self.__Q1(automaton)
+      turingMachine.WriteAndMove(write, -1)
+      return self.__Q1(turingMachine)
     else:
       self.__state = 'QDead'
 
-  def __Q1 (self, automaton:TuringMachine):
+  def __Q1 (self, turingMachine:TuringMachine):
     self.__state = 'Q1'
     write = ''
-    value = automaton.Read()
+    value = turingMachine.Read()
 
     if value == '1':
       write = '1'
-      automaton.WriteAndMove(write, -1)
-      return self.__Q1(automaton)
+      turingMachine.WriteAndMove(write, -1)
+      return self.__Q1(turingMachine)
     elif value == '0':
       write = '0'
-      automaton.WriteAndMove(write, -1)
-      return self.__Q1(automaton)
+      turingMachine.WriteAndMove(write, -1)
+      return self.__Q1(turingMachine)
     elif value == '<':
-      automaton.WriteAndMove('<', +1)
+      turingMachine.WriteAndMove('<', +1)
       return self.__Qf()
     else:
       return self.__QDead()
