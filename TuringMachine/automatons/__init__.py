@@ -1,0 +1,1 @@
+from .binary_complement import BinaryComplementAutomaton
