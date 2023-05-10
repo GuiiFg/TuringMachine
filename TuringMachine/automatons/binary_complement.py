@@ -1,19 +1,13 @@
 from ..turing_machine import TuringMachine
+from .generic_automaton import GenericAutomaton
 
-class BinaryComplementAutomaton:
+class BinaryComplementAutomaton(GenericAutomaton):
 
   def __init__(self):
-    self.__state = 'Q0'
-
-  @property
-  def state (self):
-    return self.__state
+    super().__init__()
   
-  def Start(self, turingMachine:TuringMachine):
-    return self.__Q0(turingMachine)
-    
+  @GenericAutomaton.initialstatefunction
   def __Q0 (self, turingMachine:TuringMachine):
-    self.__state = 'Q0'
     write = ''
     value = turingMachine.Read()
 
@@ -30,10 +24,10 @@ class BinaryComplementAutomaton:
       turingMachine.WriteAndMove(write, -1)
       return self.__Q1(turingMachine)
     else:
-      self.__state = 'QDead'
+      return self.__QDead()
 
+  @GenericAutomaton.statefunction
   def __Q1 (self, turingMachine:TuringMachine):
-    self.__state = 'Q1'
     write = ''
     value = turingMachine.Read()
 
@@ -50,13 +44,13 @@ class BinaryComplementAutomaton:
       return self.__Qf()
     else:
       return self.__QDead()
-    
+  
+  @GenericAutomaton.deathstatefunction
   def __QDead (self):
-    self.__state = 'QDead'
     return 'fail'
 
+  @GenericAutomaton.finalstatefunction
   def __Qf (self):
-    self.__state = 'Qf'
     return 'finished'
 
   

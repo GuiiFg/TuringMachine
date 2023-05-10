@@ -21,13 +21,11 @@ def BinaryComplementTest():
     turing_machine = TuringMachine.TuringMachine()
     turing_machine.coil = fitasDeTeste[i]
 
-    _ = automaton.Start(turing_machine)
+    automaton.Start(turing_machine)
 
-    if turing_machine.coil == fitasDeResultado[i] and automaton.state == 'Qf':
+    if automaton.isFinalState:
       print(f'Test {i + 1} - Success!')
     else:
       print(f'Test {i + 1} - Error!')
 
-
 BinaryComplementTest()
-    
