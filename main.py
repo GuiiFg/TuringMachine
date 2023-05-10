@@ -29,14 +29,16 @@ def BinaryComplementTest():
       print(f'Test {i + 1} - Error!')
 
 BinaryComplementTest()
-
-import TuringMachine
-
-turing_machine = TuringMachine.TuringMachine()
-turing_machine.coil = ['<', 1, 0, 1]
-
-turing_machine.automatons['BinaryComplement'] = TuringMachine.Automatons.BinaryComplementAutomaton()
-turing_machine.automatons['BinaryFourMultiply'] = TuringMachine.Automatons.BinaryMultiplyFourAutomaton()
-
-turing_machine.run('BinaryComplement')
-turing_machine.run('BinaryFourMultiply')
+# 
+# import TuringMachine
+# 
+# turing_machine = TuringMachine.TuringMachine()
+# turing_machine.coil = ['<', 1, 0, 1]
+# 
+# turing_machine.automatons['BinaryComplement'] = TuringMachine.Automatons.BinaryComplementAutomaton()
+# turing_machine.automatons['BinaryFourMultiply'] = TuringMachine.Automatons.BinaryMultiplyFourAutomaton()
+# 
+# turing_machine.toDict()
+# 
+# turing_machine.run('BinaryComplement')
+# turing_machine.run('BinaryFourMultiply')

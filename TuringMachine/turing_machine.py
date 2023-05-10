@@ -33,6 +33,8 @@ class TuringMachine:
     if automatonName in self.__automatons.keys():
       automaton = self.__automatons[automatonName]
       automaton.Start(self)
+    else:
+      return 'Automaton not found'
 
   def Read(self):
     if self.__pointer + 1 > len(self.__coil):
@@ -51,3 +53,11 @@ class TuringMachine:
     else:
       self.__coil[self.__pointer] = valueToWrite
     self.__pointer += movement
+
+  def toDict (self):
+    value = {
+      "coil": self.__coil,
+      "pointer": self.__pointer,
+      "automatons": [x for x in self.__automatons.keys()]
+    }
+    return value
