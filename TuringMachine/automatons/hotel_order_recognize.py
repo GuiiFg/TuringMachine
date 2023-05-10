@@ -1,23 +1,17 @@
 from ..turing_machine import TuringMachine
+from .generic_automaton import GenericAutomaton
 
-class HotelOrderRecognizeAutomaton:
+class HotelOrderRecognizeAutomaton(GenericAutomaton):
 
   def __init__(self):
-    self.__state = 'Q0'
-
-  @property
-  def state (self):
-    return self.__state
+    super().__init__()
   
-  def Start (self, turingMachine:TuringMachine):
-    return self.__Q0(turingMachine)
-  
+  @GenericAutomaton.deathstatefunction
   def __QDead (self):
-    self.__state = 'QDead'
     return 'fail'
   
+  @GenericAutomaton.finalstatefunction
   def __Qf (self,turingMachine:TuringMachine):
-    self.__state = 'Qf'
     write = ''
     value = turingMachine.Read()
 
@@ -29,10 +23,10 @@ class HotelOrderRecognizeAutomaton:
       turingMachine.WriteAndMove(write, +1)
       return 'success'
     else:
-      return 'fail'
+      return self.__QDead()
   
+  @GenericAutomaton.initialstatefunction
   def __Q0 (self, turingMachine:TuringMachine):
-    self.__state = 'Q0'
     write = ''
     value = turingMachine.Read()
 
@@ -49,6 +43,7 @@ class HotelOrderRecognizeAutomaton:
     else:
       return self.__QDead()
     
+  @GenericAutomaton.statefunction
   def __Q1 (self, turingMachine:TuringMachine):
     self.__state = 'Q1'
     write = ''
@@ -72,8 +67,8 @@ class HotelOrderRecognizeAutomaton:
     else:
       return self.__QDead()
     
+  @GenericAutomaton.statefunction
   def __Q2 (self, turingMachine:TuringMachine):
-    self.__state = 'Q2'
     write = ''
     value = turingMachine.Read()
 

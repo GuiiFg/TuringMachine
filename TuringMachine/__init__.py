@@ -1,3 +1,3 @@
 
 from .turing_machine import TuringMachine
-from .automatons import BinaryComplementAutomaton
+from . import automatons as Automatons

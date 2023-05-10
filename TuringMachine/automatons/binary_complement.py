@@ -8,19 +8,19 @@ class BinaryComplementAutomaton(GenericAutomaton):
   
   @GenericAutomaton.initialstatefunction
   def __Q0 (self, turingMachine:TuringMachine):
-    write = ''
+    write = None
     value = turingMachine.Read()
 
-    if value == '1':
-      write = '0'
+    if value == 1:
+      write = 0
       turingMachine.WriteAndMove(write, 1)
       return self.__Q0(turingMachine)
-    elif value == '0':
-      write = '1'
+    elif value == 0:
+      write = 1
       turingMachine.WriteAndMove(write, 1)
       return self.__Q0(turingMachine)
-    elif value == '__empty__':
-      write = '__empty__'
+    elif value == None:
+      write = None
       turingMachine.WriteAndMove(write, -1)
       return self.__Q1(turingMachine)
     else:
@@ -31,12 +31,12 @@ class BinaryComplementAutomaton(GenericAutomaton):
     write = ''
     value = turingMachine.Read()
 
-    if value == '1':
-      write = '1'
+    if value == 1:
+      write = 1
       turingMachine.WriteAndMove(write, -1)
       return self.__Q1(turingMachine)
-    elif value == '0':
-      write = '0'
+    elif value == 0:
+      write = 0
       turingMachine.WriteAndMove(write, -1)
       return self.__Q1(turingMachine)
     elif value == '<':
@@ -47,11 +47,11 @@ class BinaryComplementAutomaton(GenericAutomaton):
   
   @GenericAutomaton.deathstatefunction
   def __QDead (self):
-    return 'fail'
+    return False
 
   @GenericAutomaton.finalstatefunction
   def __Qf (self):
-    return 'finished'
+    return True
 
   
 
