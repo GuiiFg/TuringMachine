@@ -1,0 +1,12 @@
+setup.py
+TuringMachine/__init__.py
+TuringMachine/turing_machine.py
+TuringMachine/automatons/__init__.py
+TuringMachine/automatons/binary_complement.py
+TuringMachine/automatons/binary_multiply_four.py
+TuringMachine/automatons/generic_automaton.py
+TuringMachine/automatons/hotel_order_recognize.py
+gf_TuringMachine.egg-info/PKG-INFO
+gf_TuringMachine.egg-info/SOURCES.txt
+gf_TuringMachine.egg-info/dependency_links.txt
+gf_TuringMachine.egg-info/top_level.txt
