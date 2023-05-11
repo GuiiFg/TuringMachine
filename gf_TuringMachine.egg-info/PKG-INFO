@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: gf-TuringMachine
-Version: 1.0
+Version: 1.1
 Summary: Package for work with automatons and turing machine
 Home-page: https://github.com/GuiiFg/TuringMachine
 Author: Guilherme Farias Garcia
