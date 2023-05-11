@@ -9,6 +9,5 @@ setup(name='gf_TuringMachine',
       author='Guilherme Farias Garcia',
       author_email='farias._02f@outlook.com',
       url='https://github.com/GuiiFg/TuringMachine',
-      packages=['TuringMachine'],
-      package_dir={'TuringMachine': 'TuringMachine'},
+      packages=['TuringMachine/foo']
      )
