@@ -12,6 +12,9 @@ class HotelOrderRecognizeAutomaton(GenericAutomaton):
   
   @GenericAutomaton.finalstatefunction
   def __Qf (self,turingMachine:TuringMachine):
+    if turingMachine.pointer < 0:
+      return self.__QDead()
+    
     write = ''
     value = turingMachine.Read()
 
@@ -45,7 +48,6 @@ class HotelOrderRecognizeAutomaton(GenericAutomaton):
     
   @GenericAutomaton.statefunction
   def __Q1 (self, turingMachine:TuringMachine):
-    self.__state = 'Q1'
     write = ''
     value = turingMachine.Read()
 
