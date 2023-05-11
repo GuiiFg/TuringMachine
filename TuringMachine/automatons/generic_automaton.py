@@ -45,6 +45,16 @@ class GenericAutomaton:
       function(*arg, **kwargs)
     return __wrapper
   
+  def initialandfinalstatefunction (function):
+    def __wrapper (*arg, **kwargs):
+      arg[0].__isDeadState = False
+      arg[0].__isFinalState = True
+      arg[0].__isInitialState = True
+      arg[0].__state = function.__name__[2:] if function.__name__[:2] == '__' else function.__name__
+      arg[0].__state = arg[0].__state if function.__name__[:1] == '_' else arg[0].__state
+      function(*arg, **kwargs)
+    return __wrapper
+  
   def deathstatefunction (function):
     def __wrapper (*arg, **kwargs):
       arg[0].__isDeadState = True
@@ -80,7 +90,6 @@ class GenericAutomaton:
   def Start (self, turingMachine:TuringMachine):
     
     initFunc = self.__getInitStateMethod()
-
     initFunc(self, turingMachine)
 
   def __getInitStateMethod (self):
