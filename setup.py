@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import TuringMachine
 from distutils.core import setup
 
