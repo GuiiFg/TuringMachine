@@ -42,3 +42,21 @@ BinaryComplementTest()
 # 
 # turing_machine.run('BinaryComplement')
 # turing_machine.run('BinaryFourMultiply')
+
+import TuringMachine
+from TuringMachine.automatons import GenericAutomaton
+
+myMachine = TuringMachine.TuringMachine()
+
+myMachine.coil = [1,2,3]
+print(myMachine.coil)
+
+myMachine.coil = []
+print(myMachine.coil)
+
+import TuringMachine
+import myautomaton
+myMachine = TuringMachine.TuringMachine()
+myMachine.automatons['auto1'] = myautomaton.MyAutomatonWithError()
+myMachine.coil
+myMachine.run('auto1')

@@ -76,13 +76,16 @@ class GenericAutomaton:
     return __wrapper
   
   def __getInitalState(self):
-    return list(self.__getInitalStateName())[0]
+    initialFuncs = list(self.__getInitalStateName())
+    if len(initialFuncs) > 1:
+      raise ValueError('The automaton need have only one inital state!')
+    return initialFuncs[0]
   
   def __getInitalStateName(self):
     sourcelines = inspect.getsourcelines(self.__class__)[0]
     for i,line in enumerate(sourcelines):
       line = line.strip()
-      if line.split('(')[0].strip() == '@GenericAutomaton.initialstatefunction':
+      if line.split('(')[0].strip() in ['@GenericAutomaton.initialstatefunction', '@GenericAutomaton.initialandfinalstatefunction']:
         nextLine = sourcelines[i+1]
         name = nextLine.split('def')[1].split('(')[0].strip()
         yield(name)
