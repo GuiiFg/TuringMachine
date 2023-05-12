@@ -27,6 +27,13 @@ class TuringMachine:
   
   @coil.setter
   def coil (self, value):
+    if type(value) != list:
+      raise ValueError('Coil need be a list!')
+    if len(value) <= 0:
+      value = ['<']
+    elif value[0] != '<':
+      value = ['<'] + value
+    
     self.__coil = value
   
   def run (self, automatonName):
