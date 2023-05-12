@@ -85,7 +85,7 @@ class GenericAutomaton:
     sourcelines = inspect.getsourcelines(self.__class__)[0]
     for i,line in enumerate(sourcelines):
       line = line.strip()
-      if line.split('(')[0].strip() == '@GenericAutomaton.initialstatefunction':
+      if line.split('(')[0].strip() in ['@GenericAutomaton.initialstatefunction', '@GenericAutomaton.initialandfinalstatefunction']:
         nextLine = sourcelines[i+1]
         name = nextLine.split('def')[1].split('(')[0].strip()
         yield(name)
